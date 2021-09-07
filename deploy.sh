@@ -1,0 +1,3 @@
+make andyprivatebot
+make andyprivatebot_install
+service andyprivatebot restart

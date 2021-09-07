@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# $FreeBSD: head/emulators/tpm-emulator/files/tpmd.in 415449 2016-05-18 13:53:45Z hrs $
+#
+# PROVIDE: andyprivatebot
+# REQUIRE: SERVERS
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# andyprivatebot_enable (bool):	Set to NO by default.
+#			Set it to YES to enable tpmd.
+
+. /etc/rc.subr
+
+name=andyprivatebot
+rcvar="${name}_enable"
+command="/usr/local/bin/python3.8"
+command_args="/usr/local/libexec/andyprivatebot.pyz"
+pidfile="/var/run/${name}.pid"
+
+load_rc_config $name
+
+: ${andyprivatebot_enable:="NO"}
+
+run_rc_command "$1"
